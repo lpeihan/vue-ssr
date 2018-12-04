@@ -16,6 +16,9 @@ const ip = require('address').ip();
 module.exports = merge(webpackBaseConf, {
   mode: 'development',
   devtool: '#cheap-module-eval-source-map',
+  output: {
+    publicPath: 'http://localhost:4040/'
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': devEnv
