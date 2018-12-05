@@ -10,7 +10,7 @@ export default context => {
       const matchedComponents = router.getMatchedComponents();
 
       if (matchedComponents.length === 0) {
-        return reject(new Error({ code: 404, msg: 'no components matched' }));
+        return reject({ code: 404, msg: 'no components matched' });
       }
 
       Promise.all(matchedComponents.map(Component => {
@@ -22,6 +22,7 @@ export default context => {
           });
         }
       })).then(data => {
+        context.meta = app.$meta();
         context.state = store.state;
         context.router = router;
         resolve(app);

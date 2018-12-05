@@ -4,7 +4,9 @@ const koaStatic = require('koa-static');
 const server = new Koa();
 
 // static
-server.use(koaStatic(path.join(__dirname, '..', 'dist')));
+server.use(koaStatic(path.join(__dirname, '..', 'dist'), {
+  maxage: 365 * 24 * 60 * 60 * 1000
+}));
 
 // logger
 server.use(async(ctx, next) => {
