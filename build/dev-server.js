@@ -33,7 +33,8 @@ const server = new WebpackDevServer(compiler, {
       target: 'http://47.98.144.117:3000/',
       pathRewrite: { '^/api': '/' }
     }
-  }
+  },
+  headers: { 'Access-Control-Allow-Origin': '*' }
 });
 
 server.listen(process.env.PORT, '0.0.0.0', () => {

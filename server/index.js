@@ -69,7 +69,8 @@ server.use(async(ctx, next) => {
     const html = ejs.render(template, {
       appString,
       style: context.renderStyles(),
-      scripts: context.renderScripts()
+      scripts: context.renderScripts(),
+      initialState: context.renderState()
     });
     console.log('~~~~~~~~~', context.renderState());
 

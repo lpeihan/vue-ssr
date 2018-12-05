@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    home23
+    homed
     {{msg}}
   </div>
 </template>
@@ -15,8 +15,8 @@ export default {
   methods: {
     ...mapActions(['setMsg'])
   },
-  async asyncData() {
-    return Promise.resolve(123);
+  async asyncData({ store }) {
+    return store.dispatch('setMsg', 123);
   },
   created() {
     console.log('hello');

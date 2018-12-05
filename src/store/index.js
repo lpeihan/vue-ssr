@@ -16,7 +16,11 @@ export default () => {
     getters: {},
     actions: {
       async setMsg({ commit }, msg) {
-        await commit('SET_MSG', msg);
+        return new Promise((resolve, reject) => {
+          resolve(msg);
+        }).then((data) => {
+          commit('SET_MSG', data);
+        });
       }
     }
   });
