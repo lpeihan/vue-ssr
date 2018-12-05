@@ -71,6 +71,7 @@ server.use(async(ctx, next) => {
       style: context.renderStyles(),
       scripts: context.renderScripts()
     });
+    console.log('~~~~~~~~~', context.renderState());
 
     ctx.body = html;
   } catch (err) {
@@ -78,6 +79,6 @@ server.use(async(ctx, next) => {
   }
 });
 
-server.listen(3030, 'localhost', () => {
+server.listen(3031, 'localhost', () => {
   console.log('server is listening on port' + 3030);
 });
