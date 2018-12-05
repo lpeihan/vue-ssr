@@ -7,7 +7,7 @@ module.exports = async(ctx, renderer) => {
   const context = { url: ctx.path };
 
   const template = fs.readFileSync(
-    path.join(__dirname, '../index.template.ejs'),
+    path.join(__dirname, '../template.ejs'),
     'utf-8'
   );
 

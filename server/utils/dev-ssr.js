@@ -31,9 +31,9 @@ compiler.watch({}, async(err, stats) => {
   console.log('new bundle generated');
 });
 
-const router = new Router();
+const ssrRouter = new Router();
 
-router.get('*', async(ctx) => {
+ssrRouter.get('*', async(ctx) => {
   const clientManifest = (await axios.get(
     'http://localhost:4040/vue-ssr-client-manifest.json'
   )).data;
@@ -46,4 +46,4 @@ router.get('*', async(ctx) => {
   await renderFunction(ctx, renderer);
 });
 
-module.exports = router;
+module.exports = ssrRouter;
