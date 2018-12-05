@@ -2,6 +2,9 @@
   <div class="home">
     homed
     {{msg}}
+    <p>
+      <router-link to="/user">user</router-link>
+    </p>
   </div>
 </template>
 
@@ -23,3 +26,8 @@ export default {
   }
 };
 </script>
+
+<style lang="stylus" scoped>
+.home
+  color: red
+</style>
