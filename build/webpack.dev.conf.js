@@ -5,7 +5,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const chalk = require('chalk');
 const VueClientPlugin = require('vue-server-renderer/client-plugin');
 
-const { port } = require('../config');
+const { port, serverPort } = require('../config');
 const packageJson = require('../package.json');
 const webpackBaseConf = require('./webpack.base.conf');
 const { resolve } = require('./utils');
@@ -38,7 +38,8 @@ module.exports = merge(webpackBaseConf, {
         messages: ['Your application is running here:'],
         notes: [
           `- Local: ${chalk.cyan(`http://localhost:${port}`)}`,
-          `- Network: ${chalk.cyan(`http://${ip}:${port}`)}`
+          `- Network: ${chalk.cyan(`http://${ip}:${port}`)}`,
+          `- SSR: ${chalk.cyan(`http://localhost:${serverPort}`)}`
         ]
       }
     })

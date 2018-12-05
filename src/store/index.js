@@ -17,7 +17,9 @@ export default () => {
     actions: {
       async setMsg({ commit }, msg) {
         return new Promise((resolve, reject) => {
-          resolve(msg);
+          setTimeout(() => {
+            resolve(123);
+          }, 1000);
         }).then((data) => {
           commit('SET_MSG', data);
         });

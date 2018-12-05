@@ -11,7 +11,8 @@
     "start": "node server/server.js",
     "lint-fix": "eslint --fix --ext .js --ext .vue src/ build/",
     "babel-node": "babel-node server/server.js --config-file ./server/.babelrc.js",
-    "dev:server": "cross-env NODE_ENV=development nodemon --exec npm run babel-node --watch server"
+    "dev:server": "cross-env NODE_ENV=development nodemon --exec npm run babel-node --watch server",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\" "
   },
   "author": "",
   "license": "ISC",
@@ -46,6 +47,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "chalk": "^2.4.1",
+    "concurrently": "^4.1.0",
     "copy-webpack-plugin": "^4.6.0",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
