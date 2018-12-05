@@ -5,13 +5,15 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const chalk = require('chalk');
 const VueClientPlugin = require('vue-server-renderer/client-plugin');
 
-const { port, serverPort } = require('../config');
+const config = require('../config');
 const packageJson = require('../package.json');
 const webpackBaseConf = require('./webpack.base.conf');
 const { resolve } = require('./utils');
 const { devEnv } = require('../config/dev.env');
 
 const ip = require('address').ip();
+const port = config.dev.port;
+const serverPort = config.server.port;
 
 module.exports = merge(webpackBaseConf, {
   mode: 'development',

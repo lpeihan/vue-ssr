@@ -5,7 +5,7 @@ const MemoryFS = require('memory-fs');
 const path = require('path');
 const Router = require('koa-router');
 
-const { port } = require('../../config');
+const { port } = require('../../config').dev;
 
 const webpackServerConf = require('../../build/webpack.server.conf');
 const renderFunction = require('./render');

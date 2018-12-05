@@ -2,7 +2,7 @@ const Koa = require('koa');
 const path = require('path');
 const koaStatic = require('koa-static');
 const server = new Koa();
-const config = require('../config');
+const config = require('../config').server;
 
 // static
 server.use(koaStatic(path.join(__dirname, '..', 'dist'), {
@@ -27,6 +27,6 @@ server
   .use(ssrRouter.routes())
   .use(ssrRouter.allowedMethods());
 
-server.listen(config.serverPort, 'localhost', () => {
-  console.log('server is listening on port: ' + config.serverPort);
+server.listen(config.port, 'localhost', () => {
+  console.log('server is listening on port: ' + config.port);
 });
