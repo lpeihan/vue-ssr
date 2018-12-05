@@ -5,6 +5,8 @@ const MemoryFS = require('memory-fs');
 const path = require('path');
 const Router = require('koa-router');
 
+const { port } = require('../../config');
+
 const webpackServerConf = require('../../build/webpack.server.conf');
 const renderFunction = require('./render');
 
@@ -35,7 +37,7 @@ const ssrRouter = new Router();
 
 ssrRouter.get('*', async(ctx) => {
   const clientManifest = (await axios.get(
-    'http://localhost:4040/vue-ssr-client-manifest.json'
+    `http://localhost:${port}/vue-ssr-client-manifest.json`
   )).data;
 
   const renderer = await VueServerRenderer.createBundleRenderer(bundle, {

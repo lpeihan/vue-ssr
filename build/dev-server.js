@@ -2,14 +2,15 @@
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-// const opn = require('opn');
+const opn = require('opn');
+const config = require('../config');
 
 const webpackDevConf = require('./webpack.dev.conf');
 const { resolve } = require('./utils');
 
 // https://github.com/webpack/webpack-dev-server/issues/1377
 webpackDevConf.entry.app.unshift(
-  `webpack-dev-server/client?http://localhost:${process.env.PORT}`,
+  `webpack-dev-server/client?http://localhost:${config.port}`,
   'webpack/hot/dev-server'
 );
 
@@ -28,15 +29,12 @@ const server = new WebpackDevServer(compiler, {
     colors: true
   },
   historyApiFallback: true,
-  proxy: {
-    '/api': {
-      target: 'http://47.98.144.117:3000/',
-      pathRewrite: { '^/api': '/' }
-    }
-  },
+  proxy: config.proxy,
   headers: { 'Access-Control-Allow-Origin': '*' }
 });
 
-server.listen(process.env.PORT, '0.0.0.0', () => {
-//   opn(`http://localhost:${process.env.PORT}`);
+server.listen(config.port, '0.0.0.0', () => {
+  if (config.openBrowser) {
+    opn(`http://localhost:${config.port}`);
+  }
 });

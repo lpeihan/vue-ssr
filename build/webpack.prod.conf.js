@@ -7,7 +7,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const VueClientPlugin = require('vue-server-renderer/client-plugin');
 
-const { prodEnv } = require('../.env.js');
+const { prodEnv } = require('../config/prod.env');
 const packageJson = require('../package.json');
 const webpackBaseConf = require('./webpack.base.conf');
 const { resolve, assetsPath } = require('./utils');

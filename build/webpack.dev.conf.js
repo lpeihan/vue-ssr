@@ -5,19 +5,19 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const chalk = require('chalk');
 const VueClientPlugin = require('vue-server-renderer/client-plugin');
 
+const { port } = require('../config');
 const packageJson = require('../package.json');
 const webpackBaseConf = require('./webpack.base.conf');
 const { resolve } = require('./utils');
-const { devEnv } = require('../.env.js');
+const { devEnv } = require('../config/dev.env');
 
-const port = process.env.PORT;
 const ip = require('address').ip();
 
 module.exports = merge(webpackBaseConf, {
   mode: 'development',
   devtool: '#cheap-module-eval-source-map',
   output: {
-    publicPath: 'http://localhost:4040/'
+    publicPath: `http://localhost:${port}/`
   },
   plugins: [
     new webpack.DefinePlugin({
