@@ -10,7 +10,7 @@ export default context => {
       const matchedComponents = router.getMatchedComponents();
 
       if (matchedComponents.length === 0) {
-        return reject(new Error('no component matched'));
+        return reject(new Error({ code: 404, msg: 'no components matched' }));
       }
 
       Promise.all(matchedComponents.map(Component => {

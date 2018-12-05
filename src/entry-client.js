@@ -1,4 +1,5 @@
 import createApp from './create-app';
+import './utils/vconsole';
 
 const { app, router, store } = createApp();
 

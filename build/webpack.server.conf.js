@@ -15,7 +15,7 @@ const webpackServerConf = merge(webpackBaseConf, {
   output: {
     libraryTarget: 'commonjs2',
     filename: 'server-entry.js',
-    path: resolve('dist-server')
+    path: resolve('dist')
   },
   externals: Object.keys(require('../package.json').dependencies),
   module: {
@@ -27,12 +27,9 @@ const webpackServerConf = merge(webpackBaseConf, {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
         VUE_ENV: '"server"'
       }
-    })
+    }),
+    new VueServerPlugin()
   ]
 });
-
-if (process.env.NODE_ENV === 'development') {
-  webpackServerConf.plugins.push(new VueServerPlugin());
-}
 
 module.exports = webpackServerConf;
