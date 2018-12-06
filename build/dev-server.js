@@ -30,7 +30,8 @@ const server = new WebpackDevServer(compiler, {
   },
   historyApiFallback: true,
   proxy: config.proxy,
-  headers: { 'Access-Control-Allow-Origin': '*' }
+  headers: { 'Access-Control-Allow-Origin': '*' },
+  disableHostCheck: true
 });
 
 server.listen(config.port, '0.0.0.0', () => {

@@ -6,6 +6,6 @@
 
 <style lang="stylus" scoped>
 .user
-  color: yellow
+  color: blue
   font-size: 14px
 </style>
